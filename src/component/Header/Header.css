@@ -1,0 +1,37 @@
+.header {
+    height: 7rem;
+    color: var(--color-text-dark);
+    border-bottom: 1px solid var(--color-text-light);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 2.5rem;
+}
+
+.user-nav {
+    margin-right: 3rem;
+    align-self: stretch;
+}
+
+.user-nav__icon-box {
+    height: 100%;
+    padding: 0 1.5rem;
+    transition: all .2s;
+    cursor: pointer;
+    
+    display: flex;
+    align-items: center;
+}
+
+.user-nav__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    fill: currentColor;
+}

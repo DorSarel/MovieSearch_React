@@ -1,3 +1,10 @@
+:root {
+  --color-primary: #bdc3c7;
+  --color-secondary: #98a2a8;
+  --color-text-dark: #555e64;
+  --color-text-light: #e2e4e6;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +25,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  color: #ccc;
+  color: var(--color-text-primary);
   background-color: #2980B9;  /* fallback for old browsers */
   background-image: -webkit-linear-gradient(to right, #2980B9, #6DD5FA, #fff);  /* Chrome 10-25, Safari 5.1-6 */
   background-image: linear-gradient(to right, #2980B9, #6DD5FA, #fff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
