@@ -3,6 +3,8 @@ import Header from '../../component/Header/Header';
 import Movies from '../Movies/Movies'
 import classes from './Layout.module.css';
 
+import axios from 'axios';
+
 class Layout extends Component {
 
     state = {
@@ -15,11 +17,19 @@ class Layout extends Component {
         this.setState({ title: e.target.value });
     }
 
-    onFormSubmitHandler = (e) => {
+    async onFormSubmitHandler(e) {
         e.preventDefault();
-        console.log(this.state.title);
-        this.setState({ title: '' });
-        // TBD - fetch data from OMDB
+        this.setState({ 
+            loading: true,
+            movies: null
+         });
+        const response = await axios.get(`http://www.omdbapi.com/?s=${this.state.title}&apikey=2a3f737b`);
+        const moviesArray = [...response.data.Search];
+        this.setState({ 
+            title: '',
+            loading: false,
+            movies: moviesArray
+        });
     }
 
     render() {
@@ -28,7 +38,7 @@ class Layout extends Component {
                 <Header 
                     title={this.state.title}
                     inputChangeHandler={this.onInputChangeHandler}
-                    formSubmitHandler={this.onFormSubmitHandler} />
+                    formSubmitHandler={this.onFormSubmitHandler.bind(this)} />
 
                 <Movies 
                     movies={this.state.movies}

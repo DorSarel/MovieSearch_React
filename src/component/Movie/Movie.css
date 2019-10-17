@@ -5,14 +5,10 @@
     overflow: hidden;
     margin-bottom: 5rem;
     position: relative;
+    margin-right: 3rem;
 
     align-self: stretch;
     flex: 0 0 20%;
-}
-
-
-.movie-box:not(:last-child) {
-    margin-right: 3rem;
 }
 
 .movie-box__poster {

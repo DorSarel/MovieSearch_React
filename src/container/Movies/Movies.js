@@ -13,7 +13,13 @@ const movies = ( props ) => {
     }
 
     if (props.movies) {
-        movieComponents = null;
+        movieComponents = props.movies.map((movieObj, idx) => {
+            return <Movie 
+                        key={`${movieObj.imdbID}_${idx}`} 
+                        title={movieObj.Title}
+                        poster={movieObj.Poster}
+                        shortPlot={movieObj.Type} />
+        });
     }
 
     return (
