@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../../component/Header/Header';
+import Movies from '../Movies/Movies'
 import classes from './Layout.module.css';
 
 class Layout extends Component {
@@ -26,6 +27,8 @@ class Layout extends Component {
                     title={this.state.title}
                     inputChangeHandler={this.onInputChangeHandler}
                     formSubmitHandler={this.onFormSubmitHandler} />
+
+                <Movies />
             </div>
         )
     }
