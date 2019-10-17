@@ -7,7 +7,8 @@ class Layout extends Component {
 
     state = {
         title: '',
-        movies: null
+        movies: null,
+        loading: false
     }
 
     onInputChangeHandler = (e) => {
@@ -29,7 +30,9 @@ class Layout extends Component {
                     inputChangeHandler={this.onInputChangeHandler}
                     formSubmitHandler={this.onFormSubmitHandler} />
 
-                <Movies movies={this.state.movies} />
+                <Movies 
+                    movies={this.state.movies}
+                    shouldLoad={this.state.loading} />
             </div>
         )
     }

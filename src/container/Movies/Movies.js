@@ -1,17 +1,19 @@
 import React from 'react';
 import Movie from '../../component/Movie/Movie';
+import Spinner from '../../component/UI/Spinner/Spinner';
 
 import './Movies.css';
 
 const movies = ( props ) => {
 
-    let movieComponents;
+    let movieComponents = null;
+
+    if (props.shouldLoad) {
+        movieComponents = <Spinner />;
+    }
+
     if (props.movies) {
-        movieComponents = (
-            <Movie 
-            title="Harry potter"
-            shortPlot="Bla Bla" />
-        );
+        movieComponents = null;
     }
 
     return (
