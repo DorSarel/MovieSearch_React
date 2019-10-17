@@ -6,7 +6,8 @@ import classes from './Layout.module.css';
 class Layout extends Component {
 
     state = {
-        title: ''
+        title: '',
+        movies: null
     }
 
     onInputChangeHandler = (e) => {
@@ -28,7 +29,7 @@ class Layout extends Component {
                     inputChangeHandler={this.onInputChangeHandler}
                     formSubmitHandler={this.onFormSubmitHandler} />
 
-                <Movies />
+                <Movies movies={this.state.movies} />
             </div>
         )
     }

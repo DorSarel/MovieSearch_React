@@ -1,51 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Movie from '../../component/Movie/Movie';
 
 import './Movies.css';
-import picture from '../../assets/img/hp.jpg';
 
-class Movies extends Component {
+const movies = ( props ) => {
 
-    render() {
-        return (
-            <main className="movies">
-                <figure className="movie-box">
-                    <img src={picture} alt="Poster" className="movie-box__poster" />
-                    <div className="movie-box__detail">
-                        <h3 className="movie-box__title">Harry Potter</h3>
-                        <figcaption className="movie-box__plot">Bla BLa</figcaption>
-                        <button className="movie-box__btn">Read More</button>
-                    </div>
-                </figure>
-
-                <figure className="movie-box">
-                    <img src={picture} alt="Poster" className="movie-box__poster" />
-                    <div className="movie-box__detail">
-                        <h3 className="movie-box__title">Harry Potter</h3>
-                        <figcaption className="movie-box__plot">Bla BLa</figcaption>
-                        <button className="movie-box__btn">Read More</button>
-                    </div>
-                </figure>
-
-                <figure className="movie-box">
-                    <img src={picture} alt="Poster" className="movie-box__poster" />
-                    <div className="movie-box__detail">
-                        <h3 className="movie-box__title">Harry Potter</h3>
-                        <figcaption className="movie-box__plot">Bla BLa</figcaption>
-                        <button className="movie-box__btn">Read More</button>
-                    </div>
-                </figure>
-
-                <figure className="movie-box">
-                    <img src={picture} alt="Poster" className="movie-box__poster" />
-                    <div className="movie-box__detail">
-                        <h3 className="movie-box__title">Harry Potter</h3>
-                        <figcaption className="movie-box__plot">Bla BLa</figcaption>
-                        <button className="movie-box__btn">Read More</button>
-                    </div>
-                </figure>
-            </main>
-        )
+    let movieComponents;
+    if (props.movies) {
+        movieComponents = (
+            <Movie 
+            title="Harry potter"
+            shortPlot="Bla Bla" />
+        );
     }
+
+    return (
+        <main className="movies">
+          {movieComponents}  
+        </main>
+    )
 }
 
-export default Movies;
+export default movies;
