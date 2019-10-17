@@ -19,6 +19,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem = 10px, 10px/16px */
+  min-height: 100vh;
 }
 
 body {
@@ -31,7 +32,4 @@ body {
   background-image: linear-gradient(to right, #2980B9, #6DD5FA, #fff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: cover;
   background-repeat: no-repeat;
-
-  /* To Remove */
-  min-height: 100vh;
 }

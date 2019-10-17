@@ -7,8 +7,11 @@ const header = ( props ) => (
     <header className="header">
         <h1 className="header__title">Movie Search</h1>
 
-        <SearchBar />
-        
+        <SearchBar 
+            title={props.title}
+            changed={(e) => props.inputChangeHandler(e)}
+            submitted={(e) => props.formSubmitHandler(e)} />
+
         <nav className="user-nav">
             <div className="user-nav__icon-box">
                 <svg className="user-nav__icon">

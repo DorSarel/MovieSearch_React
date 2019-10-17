@@ -1,6 +1,7 @@
 .layout {
     max-width: 120rem;
-    margin: 20rem auto;
+    margin: 15rem auto;
+    margin-bottom: 0;
     background-color: rgb(250, 250, 250);
     border-radius: 10px;
     box-shadow: 0 3rem 6rem rgba(0,0,0,.5);
