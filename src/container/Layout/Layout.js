@@ -19,17 +19,17 @@ class Layout extends Component {
 
     async onFormSubmitHandler(e) {
         e.preventDefault();
-        this.setState({ 
-            loading: true,
-            movies: null
-         });
-        const response = await axios.get(`http://www.omdbapi.com/?s=${this.state.title}&apikey=2a3f737b`);
-        const moviesArray = [...response.data.Search];
-        this.setState({ 
-            title: '',
-            loading: false,
-            movies: moviesArray
-        });
+        // this.setState({ 
+        //     loading: true,
+        //     movies: null
+        //  });
+        // const response = await axios.get(`http://www.omdbapi.com/?s=${this.state.title}&apikey=2a3f737b`);
+        // const moviesArray = [...response.data.Search];
+        // this.setState({ 
+        //     title: '',
+        //     loading: false,
+        //     movies: moviesArray
+        // });
     }
 
     render() {

@@ -1,63 +1,65 @@
 .movie-box {
-    border: 1px solid var(--color-primary);
-    box-shadow: 0 2rem 3rem rgba(0,0,0,.3);
-    border-radius: 5px;
-    overflow: hidden;
-    margin-bottom: 5rem;
-    position: relative;
-    margin-right: 3rem;
+    padding: 1.5rem 0;
+    height: 10rem;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+}
 
-    align-self: stretch;
-    flex: 0 0 20%;
+.movie-box:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.movie-box:not(:last-child) {
+    border-bottom: 1px solid var(--color-text-light);
+}
+
+.movie-box:hover {
+    background-color: var(--color-primary);
 }
 
 .movie-box__poster {
-    display: block;
-    width: 100%;
-    height: 100%;
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    margin-left: 1rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .movie-box__detail {
-    background-color: rgba(0,0,0, .7);
-    color:#fff;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    padding: 1.5rem;
-    transform: translateY(-100%);
-    opacity: 0;
-    transition: all .2s;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.movie-box:hover .movie-box__detail {
-    transform: translateY(0);
-    opacity: 1;
+    color:black;
+    margin-right: auto;
+    margin-left: 2rem;
+    color: var(--color-text-dark);
 }
 
 .movie-box__title {
-    font-size: 1.25rem;
-    margin-bottom: .7rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.movie-box__plot {
-    font-size: 1.15rem;
+.movie-box__year {
+    font-size: 1.05rem;
     margin-bottom: auto;
 }
 
 .movie-box__btn {
-    align-self: flex-end;
     border: none;
-    border-bottom: 1px solid var(--color-text-light);
     padding-bottom: 3px;
     background-color: transparent;
     color: inherit;
     cursor: pointer;
+    margin-right: 2rem;
+    align-self: stretch;
+}
+
+.movie-box__icon {
+    width: 3rem;
+    height: 3rem;
+    fill: currentColor;
 }

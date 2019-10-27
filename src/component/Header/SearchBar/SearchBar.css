@@ -1,6 +1,7 @@
 .search {
     color: var(--color-text-dark);
     flex: 0 0 40%;
+    position: relative;
 
     display: flex;
     align-items: center;
@@ -26,6 +27,10 @@
 .search__btn {
     background-color: transparent;
     border: none;
+}
+
+.search__btn:focus {
+    outline: none;
 }
 
 .search__icon {

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import PreviewBox from '../../UI/PreviewBox/PreviewBox';
 import './SearchBar.css';
 import Icons from '../../../assets/img/sprite.svg';
 
@@ -17,6 +18,8 @@ const searchBar = ( props ) => (
                 <use xlinkHref={`${Icons}#icon-magnifying-glass`}></use>
             </svg>
         </button>
+
+        <PreviewBox />
     </form>
 )
 
