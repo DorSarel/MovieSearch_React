@@ -29,7 +29,15 @@ class Layout extends Component {
          });
         try {
             const response = await axios.get(`http://www.omdbapi.com/?s=${this.state.title}&apikey=2a3f737b`);
-            const moviesArray = [...response.data.Search];
+            const uniqueMovies = {};
+            for (let movieObj of response.data.Search) {
+                uniqueMovies[movieObj.imdbID] = movieObj;
+            }
+            
+            const moviesArray = [];
+            for (let key in uniqueMovies) {
+                moviesArray.push(uniqueMovies[key]);
+            }
             this.setState({ 
                 movies: moviesArray
             });
