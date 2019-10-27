@@ -9,6 +9,7 @@ const header = ( props ) => (
 
         <SearchBar 
             title={props.title}
+            movies={props.movies}
             changed={(e) => props.inputChangeHandler(e)}
             submitted={(e) => props.formSubmitHandler(e)} />
 

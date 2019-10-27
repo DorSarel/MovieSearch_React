@@ -19,7 +19,7 @@ const searchBar = ( props ) => (
             </svg>
         </button>
 
-        <PreviewBox />
+        <PreviewBox movies={props.movies} />
     </form>
 )
 

@@ -7,15 +7,18 @@ const previewBox = ( props ) => {
     let items = null;
     let classes = ["preview-box"];
 
-    if (items) {
+    if (props.movies) {
         classes.push("preview-box--active");
+        items = props.movies.map((movie, idx) => {
+            return <Movie key={idx} poster={movie.Poster} title={movie.Title} year={movie.Year} />
+        })
+    } else {
+        classes = ["preview-box"];
     }
     
     return (
         <div className={classes.join(' ')}>
             <ul className="preview-box__list">
-                <Movie poster="https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg" title="Check" shortPlot="Bla Bla" year="2018" />
-                <Movie poster="https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg" title="Check" shortPlot="Bla Bla" year="2018" />
                 {items}
             </ul>
         </div>

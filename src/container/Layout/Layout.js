@@ -14,22 +14,29 @@ class Layout extends Component {
     }
 
     onInputChangeHandler = (e) => {
-        this.setState({ title: e.target.value });
+        const title = e.target.value;
+        
+        if (!title) {
+            this.setState({ movies: null });
+        }
+        this.setState({ title });
     }
 
     async onFormSubmitHandler(e) {
         e.preventDefault();
-        // this.setState({ 
-        //     loading: true,
-        //     movies: null
-        //  });
-        // const response = await axios.get(`http://www.omdbapi.com/?s=${this.state.title}&apikey=2a3f737b`);
-        // const moviesArray = [...response.data.Search];
-        // this.setState({ 
-        //     title: '',
-        //     loading: false,
-        //     movies: moviesArray
-        // });
+        this.setState({ 
+            movies: null
+         });
+        try {
+            const response = await axios.get(`http://www.omdbapi.com/?s=${this.state.title}&apikey=2a3f737b`);
+            const moviesArray = [...response.data.Search];
+            this.setState({ 
+                movies: moviesArray
+            });
+        } catch (e) {
+            alert('Too many results or cannot find relevant movie');
+        }
+        
     }
 
     render() {
@@ -37,6 +44,7 @@ class Layout extends Component {
             <div className={classes.layout}>
                 <Header 
                     title={this.state.title}
+                    movies={this.state.movies}
                     inputChangeHandler={this.onInputChangeHandler}
                     formSubmitHandler={this.onFormSubmitHandler.bind(this)} />
 
