@@ -17,6 +17,7 @@
 
 .movie-box:hover {
     background-color: #6DD5FA;
+    cursor: pointer;
 }
 
 .movie-box__poster {

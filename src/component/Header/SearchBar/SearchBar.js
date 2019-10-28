@@ -20,7 +20,8 @@ const searchBar = ( props ) => (
         </button>
 
         <PreviewBox 
-            movies={props.movies} />
+            movies={props.movies}
+            selectMovie={props.selectMovie} />
     </form>
 )
 

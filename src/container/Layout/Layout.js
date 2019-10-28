@@ -11,6 +11,7 @@ class Layout extends Component {
         title: '',
         movies: [],
         likedMovies: [],
+        selectedMovie: null,
         loading: false
     }
 
@@ -51,13 +52,23 @@ class Layout extends Component {
         }
     }
 
-
+    async onMovieClickHandler(imdbID) {
+        const selectedMovie = null;
+        if (this.isMovieMarked(imdbID)) {
+            selectedMovie = { ...this.state.likedMovies.find(mObj => mObj.imdbID === imdbID) };
+        } else {
+            // Send request to OMDB server
+            const response = await axios.get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=2a3f737b`);
+            selectedMovie = { ...response.data };
+        }
+        this.setState({ selectedMovie });
+    }
 
     toggleBookmarkHandler = (movie, e) => {
         e.preventDefault();
         const likedMovies = [...this.state.likedMovies];
         const newMovie = { ...movie };
-        if (!this.isMovieMarked(movie)) {
+        if (!this.isMovieMarked(movie.imdbID)) {
             newMovie.isBookmark = true;
             likedMovies.push(newMovie);
         } else {
@@ -68,8 +79,8 @@ class Layout extends Component {
         this.setState({ likedMovies });
     }
 
-    isMovieMarked = (movie) => {
-        return (this.state.likedMovies.findIndex(mObj => mObj.imdbID === movie.imdbID) !== -1);
+    isMovieMarked = (movieID) => {
+        return (this.state.likedMovies.findIndex(mObj => mObj.imdbID === movieID) !== -1);
     }
 
     render() {
@@ -79,12 +90,13 @@ class Layout extends Component {
                     title={this.state.title}
                     movies={this.state.movies}
                     inputChangeHandler={this.onInputChangeHandler}
-                    formSubmitHandler={this.onFormSubmitHandler.bind(this)} />
+                    formSubmitHandler={this.onFormSubmitHandler.bind(this)}
+                    movieSelectHandler={this.onMovieClickHandler.bind(this)} />
 
                 <Movies 
-                    movies={this.state.movies}
+                    movie={this.state.selectedMovie}
                     shouldLoad={this.state.loading}
-                    bookmarkHandler={(e) => this.toggleBookmarkHandler({}, e)} /> {/*TBD - send selectedMovie */}
+                    bookmarkHandler={(e) => this.toggleBookmarkHandler(this.state.selectedMovie, e)} />
             </div>
         )
     }

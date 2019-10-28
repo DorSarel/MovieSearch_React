@@ -8,7 +8,7 @@ const movie = ( props ) => {
     //const iconClasses = props.isBookmark ? ["movie-box__icon", "movie-box__icon--active"] : ["movie-box__icon"];
 
     return (
-        <li className="movie-box">
+        <li className="movie-box" onClick={props.clicked}>
             <img src={props.poster} alt={props.title} className="movie-box__poster" />
             <div className="movie-box__detail">
                 <h3 className="movie-box__title">{props.title}</h3>

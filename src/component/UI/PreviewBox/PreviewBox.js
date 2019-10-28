@@ -15,7 +15,8 @@ const previewBox = ( props ) => {
                     key={idx} 
                     poster={movie.Poster} 
                     title={movie.Title} 
-                    year={movie.Year} />
+                    year={movie.Year}
+                    clicked={() => props.selectMovie(movie.imdbID)} />
             );
         })
     } else {
