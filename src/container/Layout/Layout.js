@@ -10,6 +10,7 @@ class Layout extends Component {
     state = {
         title: '',
         movies: [],
+        likedMovies: [],
         loading: false
     }
 
@@ -40,10 +41,7 @@ class Layout extends Component {
             
             const moviesArray = [];
             for (let key in uniqueMovies) {
-                moviesArray.push({
-                    ...uniqueMovies[key],
-                    isBookmark: false
-                });
+                moviesArray.push(uniqueMovies[key]);
             }
             this.setState({ 
                 movies: moviesArray

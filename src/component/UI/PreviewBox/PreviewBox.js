@@ -15,8 +15,7 @@ const previewBox = ( props ) => {
                     key={idx} 
                     poster={movie.Poster} 
                     title={movie.Title} 
-                    year={movie.Year}
-                    isBookmark={movie.isBookmark} />
+                    year={movie.Year} />
             );
         })
     } else {
