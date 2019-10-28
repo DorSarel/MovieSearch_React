@@ -7,7 +7,8 @@ import Icons from '../../assets/img/sprite.svg'
 const movies = ( props ) => {
 
     let movie = null;
-
+    const iconClasses = ["movie__icon"];
+    //const iconClasses = props.movie.isBookmark ? ["movie__icon", "movie__icon--active"] : ["movie__icon"];
     if (props.shouldLoad) {
         movie = <Spinner />;
     }
@@ -26,8 +27,8 @@ const movies = ( props ) => {
                     </div>
                 </div>
                 <p className="movie__rating">{props.movie.imdbRating}</p>
-                <button className="movie__btn" onClick={props.bookmark}>
-                    <svg className="movie__icon">
+                <button className="movie__btn" onClick={props.bookmarkHandler}>
+                    <svg className={iconClasses.join(' ')}>
                         <use xlinkHref={`${Icons}#icon-bookmark`}></use>
                     </svg>
                 </button>
@@ -49,8 +50,8 @@ const movies = ( props ) => {
                 </div>
             </div>
             <p className="movie__rating">6.7</p>
-                <button className="movie__btn" onClick={props.bookmark}>
-                    <svg className="movie__icon">
+                <button className="movie__btn" onClick={props.bookmarkHandler}>
+                    <svg className={iconClasses.join(' ')}>
                         <use xlinkHref={`${Icons}#icon-bookmark`}></use>
                     </svg>
                 </button>

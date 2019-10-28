@@ -11,8 +11,7 @@ const header = ( props ) => (
             title={props.title}
             movies={props.movies}
             changed={(e) => props.inputChangeHandler(e)}
-            submitted={(e) => props.formSubmitHandler(e)}
-            bookmarkHandler={props.bookmarkHandler} />
+            submitted={(e) => props.formSubmitHandler(e)} />
 
         <nav className="user-nav">
             <div className="user-nav__icon-box">

@@ -53,3 +53,7 @@
     height: 2.5rem;
     fill: var(--color-primary);
 }
+
+.movie__icon--active {
+    fill: var(--color-text-dark);
+}

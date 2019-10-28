@@ -9,8 +9,7 @@ class Layout extends Component {
 
     state = {
         title: '',
-        movies: null,
-        bookmarks: [],
+        movies: [],
         loading: false
     }
 
@@ -18,7 +17,7 @@ class Layout extends Component {
         const title = e.target.value;
         
         if (!title) {
-            this.setState({ movies: null });
+            this.setState({ movies: [] });
         }
         this.setState({ title });
     }
@@ -26,7 +25,7 @@ class Layout extends Component {
     async onFormSubmitHandler(e) {
         e.preventDefault();
         this.setState({ 
-            movies: null
+            movies: []
          });
         if (this.state.title === '') {
             return;
@@ -41,7 +40,10 @@ class Layout extends Component {
             
             const moviesArray = [];
             for (let key in uniqueMovies) {
-                moviesArray.push(uniqueMovies[key]);
+                moviesArray.push({
+                    ...uniqueMovies[key],
+                    isBookmark: false
+                });
             }
             this.setState({ 
                 movies: moviesArray
@@ -51,25 +53,24 @@ class Layout extends Component {
         }
     }
 
-    
+
 
     toggleBookmarkHandler = (movie, e) => {
         e.preventDefault();
-        const bookmarks = [...this.state.bookmarks];
+        const movies = [...this.state.movies];
+        const newMovie = { ...movie };
         if (!this.isMovieMarked(movie)) {
-            bookmarks.push(movie);
+            newMovie.isBookmark = true;
         } else {
-            // Remove movie from bookmarks
-            const movieIdx = bookmarks.findIndex(mObj => mObj.imdbID === movie.imdbID);
-            bookmarks.splice(movieIdx, 1);
+            newMovie.isBookmark = false;
         }
-        console.log(bookmarks);
-        this.setState({ bookmarks });
+        const movieIdx = movies.findIndex(mObj => mObj.imdbID === newMovie.imdbID);
+        movies.splice(movieIdx, 1, newMovie);
+        this.setState({ movies });
     }
 
     isMovieMarked = (movie) => {
-        const bookmarks = [...this.state.bookmarks];
-        return (bookmarks.findIndex(mObj => mObj.imdbID === movie.imdbID) !== -1);
+        return movie.isBookmark;
     }
 
     render() {
@@ -80,12 +81,12 @@ class Layout extends Component {
                     movies={this.state.movies}
                     inputChangeHandler={this.onInputChangeHandler}
                     formSubmitHandler={this.onFormSubmitHandler.bind(this)}
-                    bookmarkHandler={this.toggleBookmarkHandler}
                      />
 
                 <Movies 
                     movies={this.state.movies}
-                    shouldLoad={this.state.loading} />
+                    shouldLoad={this.state.loading}
+                    bookmarkHandler={(e) => this.toggleBookmarkHandler({}, e)} /> {/*TBD - send selectedMovie */}
             </div>
         )
     }

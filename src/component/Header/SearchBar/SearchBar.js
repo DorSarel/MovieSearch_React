@@ -20,8 +20,7 @@ const searchBar = ( props ) => (
         </button>
 
         <PreviewBox 
-            movies={props.movies}
-            toggleBookmark={props.bookmarkHandler} />
+            movies={props.movies} />
     </form>
 )
 
