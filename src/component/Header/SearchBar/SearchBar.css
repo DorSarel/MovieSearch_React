@@ -1,6 +1,15 @@
+.searchBar {
+    flex: 0 0 40%;
+}
+
+.searchBar__error {
+    margin-left: 1.5rem;
+    color: red;
+    font-size: 1.05rem;
+}
+
 .search {
     color: var(--color-text-dark);
-    flex: 0 0 40%;
     position: relative;
 
     display: flex;

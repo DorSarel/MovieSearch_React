@@ -12,7 +12,8 @@ class Layout extends Component {
         movies: [],
         likedMovies: [],
         selectedMovie: null,
-        loading: false
+        loading: false,
+        error: ''
     }
 
     onInputChangeHandler = (e) => {
@@ -27,7 +28,8 @@ class Layout extends Component {
     async onFormSubmitHandler(e) {
         e.preventDefault();
         this.setState({ 
-            movies: []
+            movies: [],
+            error: ''
          });
         if (this.state.title === '') {
             return;
@@ -48,7 +50,8 @@ class Layout extends Component {
                 movies: moviesArray
             });
         } catch (e) {
-            alert('Too many results or cannot find relevant movie');
+            const error = 'Invalid input - please provide full movie name';
+            this.setState({ error });
         }
     }
 
@@ -98,6 +101,7 @@ class Layout extends Component {
                 <Header 
                     title={this.state.title}
                     movies={this.state.movies}
+                    error={this.state.error}
                     inputChangeHandler={this.onInputChangeHandler}
                     formSubmitHandler={this.onFormSubmitHandler.bind(this)}
                     movieSelectHandler={this.onMovieClickHandler.bind(this)} />
