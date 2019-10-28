@@ -10,6 +10,7 @@ class Layout extends Component {
     state = {
         title: '',
         movies: null,
+        bookmarks: [],
         loading: false
     }
 
@@ -27,6 +28,10 @@ class Layout extends Component {
         this.setState({ 
             movies: null
          });
+        if (this.state.title === '') {
+            return;
+        }
+
         try {
             const response = await axios.get(`http://www.omdbapi.com/?s=${this.state.title}&apikey=2a3f737b`);
             const uniqueMovies = {};
@@ -47,6 +52,25 @@ class Layout extends Component {
         
     }
 
+    toggleBookmarkHandler = (movie, e) => {
+        e.preventDefault();
+        const bookmarks = [...this.state.bookmarks];
+        if (!this.isMovieMarked(movie)) {
+            bookmarks.push(movie);
+        } else {
+            // Remove movie from bookmarks
+            const movieIdx = bookmarks.findIndex(mObj => mObj.imdbID === movie.imdbID);
+            bookmarks.splice(movieIdx, 1);
+        }
+        console.log(bookmarks);
+        this.setState({ bookmarks });
+    }
+
+    isMovieMarked = (movie) => {
+        const bookmarks = [...this.state.bookmarks];
+        return (bookmarks.findIndex(mObj => mObj.imdbID === movie.imdbID) !== -1);
+    }
+
     render() {
         return (
             <div className={classes.layout}>
@@ -54,7 +78,9 @@ class Layout extends Component {
                     title={this.state.title}
                     movies={this.state.movies}
                     inputChangeHandler={this.onInputChangeHandler}
-                    formSubmitHandler={this.onFormSubmitHandler.bind(this)} />
+                    formSubmitHandler={this.onFormSubmitHandler.bind(this)}
+                    bookmarkHandler={this.toggleBookmarkHandler}
+                     />
 
                 <Movies 
                     movies={this.state.movies}

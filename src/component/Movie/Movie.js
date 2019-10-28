@@ -12,7 +12,7 @@ const movie = ( props ) => {
                 <h3 className="movie-box__title">{props.title}</h3>
                 <figcaption className="movie-box__year">{props.year}</figcaption>
             </div>
-            <button className="movie-box__btn">
+            <button className="movie-box__btn" onClick={props.bookmark}>
                 <svg className="movie-box__icon">
                     <use xlinkHref={`${Icons}#icon-bookmark`}></use>
                 </svg>

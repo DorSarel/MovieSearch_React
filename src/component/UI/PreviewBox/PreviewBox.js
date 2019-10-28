@@ -10,7 +10,14 @@ const previewBox = ( props ) => {
     if (props.movies) {
         classes.push("preview-box--active");
         items = props.movies.map((movie, idx) => {
-            return <Movie key={idx} poster={movie.Poster} title={movie.Title} year={movie.Year} />
+            return (
+                <Movie 
+                    key={idx} 
+                    poster={movie.Poster} 
+                    title={movie.Title} 
+                    year={movie.Year}
+                    bookmark={(e) => props.toggleBookmark(movie, e)} />
+            );
         })
     } else {
         classes = ["preview-box"];
