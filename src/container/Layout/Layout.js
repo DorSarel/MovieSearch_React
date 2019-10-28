@@ -53,7 +53,10 @@ class Layout extends Component {
     }
 
     async onMovieClickHandler(imdbID) {
-        const selectedMovie = null;
+        let selectedMovie = null;
+
+        this.setState({ title: '', movies: [], loading: true});
+
         if (this.isMovieMarked(imdbID)) {
             selectedMovie = { ...this.state.likedMovies.find(mObj => mObj.imdbID === imdbID) };
         } else {
@@ -61,11 +64,16 @@ class Layout extends Component {
             const response = await axios.get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=2a3f737b`);
             selectedMovie = { ...response.data };
         }
-        this.setState({ selectedMovie });
+        this.setState({ selectedMovie, loading: false });
     }
 
     toggleBookmarkHandler = (movie, e) => {
         e.preventDefault();
+
+        if (!movie) {
+            return; // In case of null
+        }
+
         const likedMovies = [...this.state.likedMovies];
         const newMovie = { ...movie };
         if (!this.isMovieMarked(movie.imdbID)) {
@@ -76,7 +84,8 @@ class Layout extends Component {
             const movieIdx = likedMovies.findIndex(mObj => mObj.imdbID === movie.imdbID);
             likedMovies.splice(movieIdx, 1);
         }
-        this.setState({ likedMovies });
+        // console.log(likedMovies);
+        this.setState({ likedMovies, selectedMovie: newMovie });
     }
 
     isMovieMarked = (movieID) => {

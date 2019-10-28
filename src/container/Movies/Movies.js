@@ -7,23 +7,22 @@ import Icons from '../../assets/img/sprite.svg'
 const movies = ( props ) => {
 
     let movie = null;
-    const iconClasses = ["movie__icon"];
-    //const iconClasses = props.movie.isBookmark ? ["movie__icon", "movie__icon--active"] : ["movie__icon"];
     if (props.shouldLoad) {
         movie = <Spinner />;
     }
-
+    
     if (props.movie) {
+        const iconClasses = props.movie.isBookmark ? ["movie__icon", "movie__icon--active"] : ["movie__icon"];
         movie = (
             <React.Fragment>
                 <img src={props.movie.Poster} alt={props.movie.Title} className="movie__photo" />
                 <div className="movie__main">
                     <h2 className="movie__title">{props.movie.Title}</h2>
                     <div className="movie__details">
-                        <p>Released: {props.movie.Released}</p>
-                        <p>Actors: {props.movie.Actors}</p>
-                        <p>Plot: {props.movie.Plot}</p>
-                        <p>BoxOffice: {props.movie.BoxOffice}</p>
+                        <p><span className="movie__details__title">Released:</span> {props.movie.Released}</p>
+                        <p><span className="movie__details__title">Actors:</span> {props.movie.Actors}</p>
+                        <p><span className="movie__details__title">Plot:</span> {props.movie.Plot}</p>
+                        <p><span className="movie__details__title">BoxOffice:</span> {props.movie.BoxOffice}</p>
                     </div>
                 </div>
                 <p className="movie__rating">{props.movie.imdbRating}</p>
@@ -38,8 +37,8 @@ const movies = ( props ) => {
 
     return (
         <main className="movie">
-          {/* {movie}   */}
-          <img src="https://m.media-amazon.com/images/M/MV5BNDU4Mzc3NzE5NV5BMl5BanBnXkFtZTgwMzE1NzI1NzM@._V1_SX300.jpg" alt="Pokémon Detective Pikachu" className="movie__photo" />
+          {movie}  
+          {/* <img src="https://m.media-amazon.com/images/M/MV5BNDU4Mzc3NzE5NV5BMl5BanBnXkFtZTgwMzE1NzI1NzM@._V1_SX300.jpg" alt="Pokémon Detective Pikachu" className="movie__photo" />
             <div className="movie__main">
                 <h1 className="movie__title">Pokémon Detective Pikachu</h1>
                 <div className="movie__details">
@@ -54,7 +53,7 @@ const movies = ( props ) => {
                     <svg className={iconClasses.join(' ')}>
                         <use xlinkHref={`${Icons}#icon-bookmark`}></use>
                     </svg>
-                </button>
+                </button> */}
         </main>
     )
 }
