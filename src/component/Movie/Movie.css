@@ -19,6 +19,10 @@
     background-color: var(--color-primary);
 }
 
+.movie-box:hover .movie-box__icon {
+    fill: #fff;
+}
+
 .movie-box__poster {
     border-radius: 50%;
     width: 8rem;
@@ -61,5 +65,5 @@
 .movie-box__icon {
     width: 3rem;
     height: 3rem;
-    fill: currentColor;
+    fill: var(--color-primary);
 }

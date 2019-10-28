@@ -49,8 +49,9 @@ class Layout extends Component {
         } catch (e) {
             alert('Too many results or cannot find relevant movie');
         }
-        
     }
+
+    
 
     toggleBookmarkHandler = (movie, e) => {
         e.preventDefault();

@@ -1,7 +1,55 @@
-.movies {
+.movie {
     padding: 6rem 8rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+}
+
+.movie__photo {
+    margin-right: 2rem;
+}
+
+.movie__main {
+    flex: 0 0 40%;
+    margin-right: auto;
+}
+
+.movie__title {
+    font-size: 2.75rem;
+    margin-bottom: 2rem;
+}
+
+.movie__details {
+    font-size: 1.5rem;
+}
+
+.movie__details p:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+.movie__details__title {
+    font-size: 1.55rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.movie__rating {
+    margin-right: 3rem;
+    font-size: 1.75rem;
+}
+
+.movie__btn {
+    border: none;
+    background-color: transparent;
+    align-self: flex-start;
+    cursor: pointer;
+}
+
+.movie__btn:focus {
+    outline: none;
+}
+
+.movie__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: var(--color-primary);
 }
