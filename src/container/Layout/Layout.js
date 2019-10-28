@@ -55,20 +55,21 @@ class Layout extends Component {
 
     toggleBookmarkHandler = (movie, e) => {
         e.preventDefault();
-        const movies = [...this.state.movies];
+        const likedMovies = [...this.state.likedMovies];
         const newMovie = { ...movie };
         if (!this.isMovieMarked(movie)) {
             newMovie.isBookmark = true;
+            likedMovies.push(newMovie);
         } else {
             newMovie.isBookmark = false;
+            const movieIdx = likedMovies.findIndex(mObj => mObj.imdbID === movie.imdbID);
+            likedMovies.splice(movieIdx, 1);
         }
-        const movieIdx = movies.findIndex(mObj => mObj.imdbID === newMovie.imdbID);
-        movies.splice(movieIdx, 1, newMovie);
-        this.setState({ movies });
+        this.setState({ likedMovies });
     }
 
     isMovieMarked = (movie) => {
-        return movie.isBookmark;
+        return (this.state.likedMovies.findIndex(mObj => mObj.imdbID === movie.imdbID) !== -1);
     }
 
     render() {
@@ -78,8 +79,7 @@ class Layout extends Component {
                     title={this.state.title}
                     movies={this.state.movies}
                     inputChangeHandler={this.onInputChangeHandler}
-                    formSubmitHandler={this.onFormSubmitHandler.bind(this)}
-                     />
+                    formSubmitHandler={this.onFormSubmitHandler.bind(this)} />
 
                 <Movies 
                     movies={this.state.movies}
