@@ -6,6 +6,8 @@
 
 .movie__photo {
     margin-right: 2rem;
+    display: block;
+    height: 100%;
 }
 
 .movie__main {

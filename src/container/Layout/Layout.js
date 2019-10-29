@@ -58,16 +58,22 @@ class Layout extends Component {
     async onMovieClickHandler(imdbID) {
         let selectedMovie = null;
 
-        this.setState({ title: '', movies: [], loading: true});
+        this.setState({ title: '', movies: [], loading: true, error: '' });
 
         if (this.isMovieMarked(imdbID)) {
             selectedMovie = { ...this.state.likedMovies.find(mObj => mObj.imdbID === imdbID) };
         } else {
             // Send request to OMDB server
-            const response = await axios.get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=2a3f737b`);
-            selectedMovie = { ...response.data };
+            try {
+
+                const response = await axios.get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=2a3f737b`);
+                selectedMovie = { ...response.data };
+                this.setState({ selectedMovie, loading: false });
+            } catch (e) {
+                const error = `Unable to fetch movie with Id: ${imdbID}. Please try again`;
+                this.setState({ error, loading: false });
+            }
         }
-        this.setState({ selectedMovie, loading: false });
     }
 
     toggleBookmarkHandler = (movie, e) => {
