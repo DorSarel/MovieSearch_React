@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './Movie.css';
-import Icons from '../../assets/img/sprite.svg';
+// import Icons from '../../assets/img/sprite.svg';
 
 const movie = ( props ) => {
 

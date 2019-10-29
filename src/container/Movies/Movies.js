@@ -17,7 +17,15 @@ const movies = ( props ) => {
             <React.Fragment>
                 <img src={props.movie.Poster} alt={props.movie.Title} className="movie__photo" />
                 <div className="movie__main">
-                    <h2 className="movie__title">{props.movie.Title}</h2>
+                    <div className="movie__header">
+                        <h2 className="movie__title">{props.movie.Title}</h2>
+                        <p className="movie__rating">{props.movie.imdbRating}</p>
+                        <button className="movie__btn" onClick={props.bookmarkHandler}>
+                            <svg className={iconClasses.join(' ')}>
+                                <use xlinkHref={`${Icons}#icon-bookmark`}></use>
+                            </svg>
+                        </button>
+                    </div>
                     <div className="movie__details">
                         <p><span className="movie__details__title">Released:</span> {props.movie.Released}</p>
                         <p><span className="movie__details__title">Actors:</span> {props.movie.Actors}</p>
@@ -25,12 +33,6 @@ const movies = ( props ) => {
                         <p><span className="movie__details__title">BoxOffice:</span> {props.movie.BoxOffice}</p>
                     </div>
                 </div>
-                <p className="movie__rating">{props.movie.imdbRating}</p>
-                <button className="movie__btn" onClick={props.bookmarkHandler}>
-                    <svg className={iconClasses.join(' ')}>
-                        <use xlinkHref={`${Icons}#icon-bookmark`}></use>
-                    </svg>
-                </button>
             </React.Fragment>   
         )
     }
