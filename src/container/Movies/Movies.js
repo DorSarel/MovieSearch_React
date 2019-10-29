@@ -36,24 +36,8 @@ const movies = ( props ) => {
     }
 
     return (
-        <main className="movie">
-          {movie}  
-          {/* <img src="https://m.media-amazon.com/images/M/MV5BNDU4Mzc3NzE5NV5BMl5BanBnXkFtZTgwMzE1NzI1NzM@._V1_SX300.jpg" alt="Pokémon Detective Pikachu" className="movie__photo" />
-            <div className="movie__main">
-                <h1 className="movie__title">Pokémon Detective Pikachu</h1>
-                <div className="movie__details">
-                    <p><span className="movie__details__title">Released</span>: 10 May 2019</p>
-                    <p>Actors: Ryan Reynolds, Justice Smith, Kathryn Newton, Bill Nighy</p>
-                    <p>Plot: In a world where people collect Pokémon to do battle, a boy comes across an intelligent talking Pikachu who seeks to be a detective.</p>
-                    <p>BoxOffice: N/A</p>
-                </div>
-            </div>
-            <p className="movie__rating">6.7</p>
-                <button className="movie__btn" onClick={props.bookmarkHandler}>
-                    <svg className={iconClasses.join(' ')}>
-                        <use xlinkHref={`${Icons}#icon-bookmark`}></use>
-                    </svg>
-                </button> */}
+        <main className="movie" onClick={props.clickHandler}>
+          {movie}
         </main>
     )
 }

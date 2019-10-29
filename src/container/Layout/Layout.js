@@ -95,6 +95,12 @@ class Layout extends Component {
         return (this.state.likedMovies.findIndex(mObj => mObj.imdbID === movieID) !== -1);
     }
 
+    clearPreviewBox = () => {
+        if (this.state.movies.length > 0) {
+            this.setState({ movies: [] });
+        }
+    }
+
     render() {
         return (
             <div className={classes.layout}>
@@ -109,7 +115,8 @@ class Layout extends Component {
                 <Movies 
                     movie={this.state.selectedMovie}
                     shouldLoad={this.state.loading}
-                    bookmarkHandler={(e) => this.toggleBookmarkHandler(this.state.selectedMovie, e)} />
+                    bookmarkHandler={(e) => this.toggleBookmarkHandler(this.state.selectedMovie, e)}
+                    clickHandler={this.clearPreviewBox} />
             </div>
         )
     }
