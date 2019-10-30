@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import Header from '../../component/Header/Header';
 import Movies from '../Movies/Movies'
+import Bookmark from '../Bookmark/Bookmark';
 import classes from './Layout.module.css';
 
 import axios from 'axios';
@@ -129,7 +130,9 @@ class Layout extends Component {
                     clickHandler={this.clearPreviewBox}
                     {...props} />
             )}></Route>
-            <Route path="/bookmarks" render={() => <h1>Hello</h1>}></Route>
+            <Route path="/bookmarks" render={() => (
+                <Bookmark />
+            )}></Route>
             </div>
         )
     }

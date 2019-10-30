@@ -1,0 +1,55 @@
+.bookmark {
+    padding: 3rem 6rem;
+}
+
+.bookmark__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.bookmark__item {
+    flex: 0 0 30%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    margin-right: 3.25rem;
+}
+
+.bookmark__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bookmark__title {
+    font-size: 1.8rem;
+}
+
+.bookmark__btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.bookmark__btn:focus {
+    outline: none;
+}
+
+.bookmark__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: var(--color-text-dark);
+}
+
+.bookmark__photo {
+    /* display: block; */
+    height: 30rem;
+    /* width: 100%; */
+}
