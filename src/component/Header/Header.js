@@ -6,7 +6,9 @@ import Icons from '../../assets/img/sprite.svg';
 
 const header = ( props ) => (
     <header className="header">
-        <h1 className="header__title">Movie Search</h1>
+        <Link to="/">
+            <h1 className="header__title">Movie Search</h1>
+        </Link>
 
         <SearchBar 
             title={props.title}
