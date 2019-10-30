@@ -131,7 +131,7 @@ class Layout extends Component {
                     {...props} />
             )}></Route>
             <Route path="/bookmarks" render={() => (
-                <Bookmark />
+                <Bookmark likedMovies={this.state.likedMovies} />
             )}></Route>
             </div>
         )
