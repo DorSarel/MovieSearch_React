@@ -18,7 +18,9 @@ const bookmark = ( props ) => {
                 <li className="bookmark__item">
                     <div className="bookmark__details">
                         <h2 className="bookmark__title">{movie.Title}</h2>
-                        <button className="bookmark__btn">
+                        <button 
+                            className="bookmark__btn"
+                            onClick={ (e) => props.clicked(movie, e) }>
                             <svg className="bookmark__icon">
                                 <use xlinkHref={`${Icons}#icon-bookmark`}></use>
                             </svg>
