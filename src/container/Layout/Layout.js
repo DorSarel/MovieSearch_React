@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
 import Header from '../../component/Header/Header';
 import Movies from '../Movies/Movies'
 import classes from './Layout.module.css';
@@ -59,13 +60,15 @@ class Layout extends Component {
         let selectedMovie = null;
 
         this.setState({ title: '', movies: [], loading: true, error: '' });
+        if (this.props.location.pathname !== '/') {
+            this.props.history.push('/');
+        }
 
         if (this.isMovieMarked(imdbID)) {
             selectedMovie = { ...this.state.likedMovies.find(mObj => mObj.imdbID === imdbID) };
         } else {
             // Send request to OMDB server
             try {
-
                 const response = await axios.get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&apikey=2a3f737b`);
                 selectedMovie = { ...response.data };
                 this.setState({ selectedMovie, loading: false });
@@ -118,13 +121,17 @@ class Layout extends Component {
                     formSubmitHandler={this.onFormSubmitHandler.bind(this)}
                     movieSelectHandler={this.onMovieClickHandler.bind(this)} />
 
+            <Route path="/" exact render={(props) => (
                 <Movies 
                     movie={this.state.selectedMovie}
                     shouldLoad={this.state.loading}
                     bookmarkHandler={(e) => this.toggleBookmarkHandler(this.state.selectedMovie, e)}
-                    clickHandler={this.clearPreviewBox} />
+                    clickHandler={this.clearPreviewBox}
+                    {...props} />
+            )}></Route>
+            <Route path="/bookmarks" render={() => <h1>Hello</h1>}></Route>
             </div>
         )
     }
 }
-export default Layout;
+export default withRouter(Layout);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar/SearchBar';
 import './Header.css';
 import Icons from '../../assets/img/sprite.svg';
@@ -16,11 +17,14 @@ const header = ( props ) => (
             selectMovie={props.movieSelectHandler} />
 
         <nav className="user-nav">
-            <div className="user-nav__icon-box">
-                <svg className="user-nav__icon">
-                    <use xlinkHref={`${Icons}#icon-bookmark`}></use>
-                </svg>
-            </div>
+            <Link to="/bookmarks">
+                <div className="user-nav__icon-box">
+                    <svg className="user-nav__icon">
+                        <use xlinkHref={`${Icons}#icon-bookmark`}>
+                        </use>
+                    </svg>
+                </div>
+            </Link>
         </nav>
     </header> 
 )
