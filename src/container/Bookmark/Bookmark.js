@@ -7,8 +7,12 @@ import './Bookmark.css';
 
 const bookmark = ( props ) => {
 
-    let likedMovies = <Spinner />
+    let noLikedMovies = (
+        <h1 style={{textAlign: 'center'}}>No liked movies yet..</h1>
+    );
+    let likedMovies = null;
     if (props.likedMovies.length > 0) {
+        noLikedMovies = null;
         likedMovies = props.likedMovies.map(movie => {
             return (
                 <li className="bookmark__item">
@@ -28,6 +32,7 @@ const bookmark = ( props ) => {
 
     return (
         <div className="bookmark">
+            {noLikedMovies}
             <ul className="bookmark__list">
                 {likedMovies}
             </ul>

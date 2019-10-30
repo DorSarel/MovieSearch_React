@@ -20,6 +20,12 @@
     align-self: stretch;
 }
 
+.user-nav > a:link,
+.user-nav > a:active,
+.user-nav > a:visited {
+    color: currentColor;
+}
+
 .user-nav__icon-box {
     height: 100%;
     padding: 0 1.5rem;
